@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sales Dashboard</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body>
+        <nav class="mobile-nav">
+            <button class="hamburger-menu" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1>Sales Dashboard</h1>
+        </nav>
+    
+        <div class="dashboard-container">
+            <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+            <aside class="sidebar" id="sidebar">
+                <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+                <div class="sidebar-header">
+                    <h1>Sales Dashboard</h1>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <h2>Main Menu</h2>
+                    <ul>
+                        <li><a href="index.html" class="active"><i class="fa-solid fa-chart-line menu-icon"></i> Dashboard</a></li>
+                        <li><a href="settings.html"><i class="fa-solid fa-gear menu-icon"></i> Settings</a></li>
+                    </ul>
+                </nav>
+                
+                <nav class="sidebar-menu">
+                    <h2>Report Menu</h2>
+                    <ul>
+                        <li><a href="products.html"><i class="fa-solid fa-box-open menu-icon"></i> Products</a></li>
+                        <li><a href="transactions.html"><i class="fa-solid fa-wallet menu-icon"></i> Transactions</a></li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p>&copy; Mochammad Ariel Sulton</p>
+                    <p>Version 1.0.0</p>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <p style="opacity: 60%; margin-left: 20px;" id="greeting">Hello Ariel Sulton, Welcome back!</p>
+
+                <div id="product-index" class="product-grid">
+                    <!-- Dynamic Product Cards -->
+                </div>
+
+                <div class="chart-container">
+                    <div id="barChart" class="chart">
+                        <h3 class="chart-title">Total Penjualan per Produk</h3>
+                    </div>
+
+                    <div id="lineChart" class="chart">
+                        <h3 class="chart-title">Trend Penjualan per Tanggal</h3>
+                    </div>
+
+                    <div id="pieChart" class="chart">
+                        <h3 class="chart-title">Distribusi Penjualan per Produk</h3>
+                    </div>
+                    
+                    <div id="horizontalBarChart" class="chart">
+                        <h3 class="chart-title">Top 3 Tanggal dengan Penjualan Tertinggi</h3>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/sidebar.js"></script>
+        <script>
+            window.onload = function() {
+                const userName = localStorage.getItem('userName');
+                if (userName) {
+                    const greeting = document.getElementById('greeting');
+                    if (greeting) {
+                        greeting.innerText = `Hello ${userName}, Welcome back!`;
+                    }
+                }
+            };
+        </script>
+    </body>
+</html>
